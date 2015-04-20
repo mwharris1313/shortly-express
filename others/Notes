@@ -1,0 +1,5 @@
+curl -H "Content-Type: application/json" -X POST -d '{"url":"http://www.amazon.com"}' http://localhost:4568/links
+
+Question List:
+1. How title was inserted into table "urls"
+2
