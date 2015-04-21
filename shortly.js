@@ -26,12 +26,13 @@ app.use(cookieParser());
 
 app.get('/',
 function(req, res) {
-  console.log('req.headers.cookie:', req.headers.cookie);
-  console.log("req.cookies: ", req.cookies);
-  res.cookie('cart', { items: 0 });
-  res.send(200, 'SETTING COOKIE');
+  // console.log('req.headers.cookie:', req.headers.cookie);
+  // console.log("req.cookies: ", req.cookies);
+  // res.cookie('cart', { items: 0 });
+  // res.send(200, 'SETTING COOKIE');
+
   //res.redirect('/login');
-  //res.render('index');
+  res.render('index');
 });
 
 app.get('/login',
