@@ -2,7 +2,7 @@ var express = require('express');
 var util = require('./lib/utility');
 var partials = require('express-partials');
 var bodyParser = require('body-parser');
-
+var cookieParser = require('cookie-parser')
 
 var db = require('./app/config');
 var Users = require('./app/collections/users');
@@ -21,11 +21,16 @@ app.use(bodyParser.json());
 // Parse forms (signup/login)
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
-
+// use cookie-parser
+app.use(cookieParser());
 
 app.get('/',
 function(req, res) {
-  res.redirect('/login');
+  console.log('req.headers.cookie:', req.headers.cookie);
+  console.log("req.cookies: ", req.cookies);
+  res.cookie('cart', { items: 0 });
+  res.send(200, 'SETTING COOKIE');
+  //res.redirect('/login');
   //res.render('index');
 });
 
