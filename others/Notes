@@ -2,4 +2,5 @@ curl -H "Content-Type: application/json" -X POST -d '{"url":"http://www.amazon.c
 
 Question List:
 1. How title was inserted into table "urls"
-2
+2. Shortcode redirects to correct url without www.
+3. Case "Fetches the link url title"

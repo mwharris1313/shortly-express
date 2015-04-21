@@ -55,8 +55,6 @@ function(req, res) {
   var uri = req.body.url;
 
   if (!util.isValidUrl(uri)) {
-    console.log('Not a valid url: ', uri);
-//    return res.send(404);
     return res.status(404).send('sent 404');
   }
 
