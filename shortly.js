@@ -25,7 +25,8 @@ app.use(express.static(__dirname + '/public'));
 
 app.get('/',
 function(req, res) {
-  res.render('index');
+  res.redirect('/login');
+  //res.render('index');
 });
 
 app.get('/login',
@@ -40,15 +41,26 @@ function(req, res) {
 
 app.get('/create',
 function(req, res) {
-  res.render('index');
+  res.redirect('/login');
+//  res.render('index');
 });
 
 app.get('/links',
 function(req, res) {
+  // res.redirect('/login');
   Links.reset().fetch().then(function(links) {
     res.send(200, links.models);
   });
 });
+
+app.get('/users',
+function(req, res) {
+  // res.redirect('/login');
+  Users.reset().fetch().then(function(users) {
+    res.send(200, users.models);
+  });
+});
+
 
 app.post('/links',
 function(req, res) {
@@ -78,6 +90,22 @@ function(req, res) {
           Links.add(newLink);
           res.send(200, newLink);
         });
+      });
+    }
+  });
+});
+
+app.post('/signup', function(req, res){
+  var username = req.body.username;
+  var password = req.body.password;
+
+  new User({ username: username}).fetch().then(function(found){
+    if (found){
+      res.send(200, found.attributes);
+    } else {
+      new User({ username: username, password: password}).save().then(function(newUser){
+        Users.add(newUser);
+        res.send(200, newUser);
       });
     }
   });

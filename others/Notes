@@ -1,6 +1,17 @@
 curl -H "Content-Type: application/json" -X POST -d '{"url":"http://www.amazon.com"}' http://localhost:4568/links
 
+curl -H "Content-Type: application/json" -X POST -d '{ "username": "mike", "password": "mike"}' http://localhost:4568/signup
+
 Question List:
 1. How title was inserted into table "urls"
-2. Shortcode redirects to correct url without www.
-3. Case "Fetches the link url title"
+2. Test Case Bug "Shortcode redirects to correct url" href without www.
+3. Test Case Bug "Fetches the link url title" old title.
+
+{"id":4,
+"url":"http://www.google.com",
+"base_url":"http://localhost:4568",
+"code":"738dd",
+"title":"Google",
+"visits":0,
+"created_at":1429566640176,
+"updated_at":1429566640176},
