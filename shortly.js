@@ -11,6 +11,9 @@ var Links = require('./app/collections/links');
 var Link = require('./app/models/link');
 var Click = require('./app/models/click');
 
+// ----------------
+var bcrypt = require('bcrypt-nodejs');
+
 var app = express();
 
 app.set('views', __dirname + '/views');
@@ -109,9 +112,10 @@ app.post('/signup', function(req, res){
     if (found){
       res.send(200, found.attributes);
     } else {
-      new User({ username: username, password: password}).save().then(function(newUser){
-        Users.add(newUser);
-        res.send(200, newUser);
+        var newUser = new User({ username: username, password: password});
+        newUser.save().then(function(newUser){
+          Users.add(newUser);
+          res.send(200, newUser);
       });
     }
   });
